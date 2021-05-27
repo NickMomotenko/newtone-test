@@ -4,12 +4,13 @@ import { ItemWrapp, ItemTitle, ItemIcon } from "./styles";
 
 import { useCounter } from "../../hooks/useCounter";
 
+import { withData } from "../../context/data";
+
 import Button from "../Button";
 import { Block, Row } from "../Layout";
+import Text from "../Text";
 
 import Counter from "../../components/Counter";
-import Text from "../Text";
-import { withData } from "../../context/data";
 
 const Item = ({ product, ...props }) => {
   const { value, incr, decr } = useCounter();

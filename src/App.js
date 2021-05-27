@@ -1,10 +1,9 @@
 import React from "react";
 
-import { useHistory } from "react-router";
-
 import { Switch, Route, Link } from "react-router-dom";
 
 import styled from "styled-components";
+
 import { withData } from "./context/data";
 
 import Busket from "./pages/Busket";
@@ -24,7 +23,7 @@ const AppList = styled(Block)`
 `;
 
 const App = (props) => {
-  const { data ,totalValue } = props;
+  const { data } = props;
 
   return (
     <AppWrapp>
@@ -42,7 +41,6 @@ const App = (props) => {
               ))}
             </AppList>
             <Link to="/busket">Перейти в Корзину</Link>
-            <div>{totalValue}</div>
           </Route>
         </Switch>
       </Container>
