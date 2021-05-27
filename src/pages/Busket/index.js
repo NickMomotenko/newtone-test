@@ -26,9 +26,9 @@ const Busket = (props) => {
               <Block>
                 <Text text={`Количество: ${value}`} />
               </Block>
-              <Block>
+              {/* <Block>
                 <Text text={`Цена: ${price}`} />
-              </Block>
+              </Block> */}
             </Block>
           </BusketItem>
         ))}
