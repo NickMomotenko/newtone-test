@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const TextWrapp = styled.div`
   font-size: ${(props) => (props.size ? `${props.size}px` : "14px")};

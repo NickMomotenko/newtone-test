@@ -2,7 +2,7 @@ import React from "react";
 
 import { withData } from "../../context/data";
 
-import { Block, Row } from "../../UI/Layout";
+import { Block } from "../../UI/Layout";
 import Text from "../../UI/Text";
 
 import { BusketWrapp, BusketItem, BusketList } from "./styles";
