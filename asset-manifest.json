@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/newtone-test/static/css/main.1a8e9033.chunk.css",
+    "main.js": "/newtone-test/static/js/main.79161001.chunk.js",
+    "main.js.map": "/newtone-test/static/js/main.79161001.chunk.js.map",
+    "runtime-main.js": "/newtone-test/static/js/runtime-main.43c9a7e4.js",
+    "runtime-main.js.map": "/newtone-test/static/js/runtime-main.43c9a7e4.js.map",
+    "static/js/2.392744cc.chunk.js": "/newtone-test/static/js/2.392744cc.chunk.js",
+    "static/js/2.392744cc.chunk.js.map": "/newtone-test/static/js/2.392744cc.chunk.js.map",
+    "static/js/3.f5bbe93d.chunk.js": "/newtone-test/static/js/3.f5bbe93d.chunk.js",
+    "static/js/3.f5bbe93d.chunk.js.map": "/newtone-test/static/js/3.f5bbe93d.chunk.js.map",
+    "index.html": "/newtone-test/index.html",
+    "static/css/main.1a8e9033.chunk.css.map": "/newtone-test/static/css/main.1a8e9033.chunk.css.map",
+    "static/js/2.392744cc.chunk.js.LICENSE.txt": "/newtone-test/static/js/2.392744cc.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.43c9a7e4.js",
+    "static/js/2.392744cc.chunk.js",
+    "static/css/main.1a8e9033.chunk.css",
+    "static/js/main.79161001.chunk.js"
+  ]
+}
