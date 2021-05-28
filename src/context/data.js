@@ -4,19 +4,19 @@ import { v4 as uuid } from "uuid";
 
 const initialState = [
   {
-    id: uuid(),
+    id: 1,
     title: "Банан",
     price: 10,
     discount: false,
   },
   {
-    id: uuid(),
+    id: 2,
     title: "Яблоки",
     price: 8,
     discount: false,
   },
   {
-    id: uuid(),
+    id: 3,
     title: "Папайа",
     price: 10,
     discount: true,
@@ -47,34 +47,52 @@ export const DataProvider = ({ children }) => {
       });
 
       setTotalValue(total);
+    } else {
+      setTotalValue(0);
     }
 
     function totalWithDiscount(counter, price) {
-      const num = 3;
-      const priceForNum = 25;
-      let totaln = 0;
+      const counterForGuaranteedDiscount = 3;
+      const priceForProductWithDiscount = 25;
+      let totalPurchaseAmount = 0;
 
-      if (counter % num === 0) {
-        totaln += (counter / num) * priceForNum;
+      if (counter % counterForGuaranteedDiscount === 0) {
+        totalPurchaseAmount +=
+          (counter / counterForGuaranteedDiscount) *
+          priceForProductWithDiscount;
       } else {
-        let x = counter / num;
-        let str = x.toString();
-        let beforeComa = Number(str.split(".")[0]);
+        let occurrenceCounter = counter / counterForGuaranteedDiscount;
+        let stringFromOccurrenceCounter = occurrenceCounter.toString();
+        let valueBeforeComa = Number(stringFromOccurrenceCounter.split(".")[0]);
 
-        totaln = totaln + beforeComa * priceForNum;
-        totaln = totaln + (counter % num) * price;
+        totalPurchaseAmount += valueBeforeComa * priceForProductWithDiscount;
+        totalPurchaseAmount += (counter % counterForGuaranteedDiscount) * price;
       }
 
-      return totaln;
+      return totalPurchaseAmount;
     }
   }, [busket]);
 
   const addToBusket = (item) => {
-    let prod = busket.find((x) => x.id === item.id);
+    let isProductInBusket = busket.find((x) => x.id === item.id);
 
-    if (prod) return;
+    if (isProductInBusket) {
+      let arr = busket.map((busketItem) => {
+        if (busketItem.id === isProductInBusket.id) {
+          busketItem.value = isProductInBusket.value + item.value;
+        }
 
-    setBusket((prev) => [...prev, item]);
+        return busketItem;
+      });
+
+      setBusket(arr);
+    } else {
+      setBusket([...busket, item]);
+    }
+  };
+
+  const deleteItemFromBusket = (id) => {
+    setBusket(busket.filter((item) => item.id !== id));
   };
 
   return (
@@ -84,6 +102,7 @@ export const DataProvider = ({ children }) => {
         setData,
         busket,
         addToBusket,
+        deleteItemFromBusket,
         totalValue,
       }}
     >

@@ -1,39 +1,53 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import { withData } from "../../context/data";
 
-import { Block } from "../../UI/Layout";
+import { Block, Row } from "../../UI/Layout";
 import Text from "../../UI/Text";
 
-import { BusketWrapp, BusketItem, BusketList } from "./styles";
+import {
+  BusketWrapp,
+  BusketItem,
+  BusketList,
+  BusketDeleteItemButton,
+} from "./styles";
 
 const Busket = (props) => {
-  const { busket, totalValue } = props;
-
-  if (!busket.length) {
-    return <Text text="Корзина пуста ..." />;
-  }
+  const { busket, totalValue, deleteItemFromBusket } = props;
 
   return (
     <BusketWrapp>
       <BusketList as="ul">
-        {busket?.map(({ id, title, price, value }) => (
-          <BusketItem key={id} as="li">
-            <Block>
-              <Text text={title} bold />
-            </Block>
-            <Block>
-              <Block>
-                <Text text={`Количество: ${value}`} />
-              </Block>
-              {/* <Block>
-                <Text text={`Цена: ${price}`} />
-              </Block> */}
-            </Block>
-          </BusketItem>
-        ))}
+        {!busket.length ? (
+          <Text text="Корзина пуста ..." />
+        ) : (
+          <Block>
+            {busket?.map(({ id, title, value }) => (
+              <BusketItem key={id} as="li">
+                <Block>
+                  <Text text={title} bold />
+                </Block>
+                <Block>
+                  <Block>
+                    <Text text={`Количество: ${value}`} />
+                  </Block>
+                </Block>
+                <Row style={{ justifyContent: "flex-end" }}>
+                  <BusketDeleteItemButton
+                    text="Delete"
+                    onClick={() => deleteItemFromBusket(id)}
+                  />
+                </Row>
+              </BusketItem>
+            ))}
+            <Text text={`Общай стоимость: ${totalValue}`} />
+          </Block>
+        )}
       </BusketList>
-      <Text text={`Общай стоимость: ${totalValue}`} />
+
+      <Link to="/">Перейти в Список</Link>
     </BusketWrapp>
   );
 };
